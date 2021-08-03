@@ -44,8 +44,8 @@ const Layout = ({ pageTitle, children }) => {
                     </Link>
                 </div>
             </nav>
-            <main>
-                <div className=" mx-6 my-3">
+            <main className="bg-space-indigo h-full">
+                <div className=" px-6 py-3 ">
                     {children}
                 </div>
             </main>

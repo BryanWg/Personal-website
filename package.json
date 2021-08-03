@@ -23,7 +23,8 @@
     "gatsby-source-filesystem": "^3.10.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-icons": "^4.2.0"
+    "react-icons": "^4.2.0",
+    "react-terminal-ui": "^0.1.14"
   },
   "devDependencies": {
     "autoprefixer": "^10.3.1",
