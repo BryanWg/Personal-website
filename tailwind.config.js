@@ -12,6 +12,9 @@ module.exports = {
         'space-indigo': '#1d1135',
         'terminal-gray': '#32385A',
         'terminal-special': '#B8CBFA',
+      },
+      animation: {
+        'float': 'floating 4s ease-in-out infinite',
       }
     },
   },

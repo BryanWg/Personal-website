@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { navigate } from 'gatsby-link';
 export default function Terminal() {
     const [description, setDescription] = useState('');
     const [index, setIndex] = useState(0);
@@ -8,6 +8,7 @@ export default function Terminal() {
     const [blink, setBlink] = useState(true);
     const words = ["student", 'software engineer'];
     const [input, setInput] = useState('');
+    const [output, setOutput] = useState('');
     useEffect(() => {
         if (index === words.length) {
             return;
@@ -42,45 +43,60 @@ export default function Terminal() {
 
     const handleInput = (e) => {
         e.preventDefault();
-        console.log(input)
+        const inputs = input.trim().toLocaleLowerCase().split(' ');
+        console.log(inputs)
+
+        const links = {
+            blogs: '/blogs/',
+            projects: '/projects/',
+        }
+        if (inputs[0] !== 'cd' || !(inputs[1] in links)) {
+            setOutput('Command not found, try \'cd about\'');
+            return
+        }
+        
+        navigate(links[inputs[1]])
+        setOutput('')
+        console.log(links[inputs[1]])
     };
     return (
-        <div className="flex flex-col bg-terminal-gray rounded-md px-4 py-4">
+        <div className={"flex flex-col bg-terminal-gray rounded-md px-4 py-4 font-mono text-xl w-2/5 drop-shadow-2xl    "}>
             <div className="flex justify-center content-start items-center h-3 mb-5 md:mb-9">
                 <div className="flex items-center space-x-2 md:space-x-3 h-3 w-14">
                     <Circle style="text-red-500" />
                     <Circle style="text-yellow-500" />
                     <Circle style="text-green-500" />
                 </div>
-                <p className=" text-gray-300 mx-auto font-mono">Hello world</p>
+                <p className=" text-gray-300 mx-auto  ">Hello world</p>
                 <div className="w-14" />
             </div>
             <div className="flex flex-col h-auto mx-3 md:mx-9">
-                <p className="text-white font-mono">Heyoo, My name is Bryan 😊</p>
+                <p className="text-white  ">Heyoo, My name is Bryan 😊</p>
                 <div className="flex items-center mb-3">
-                    <p className="text-white font-mono">I'm a</p>
-                    <p className="text-white font-mono text-lg">&nbsp;</p>
-                    <p className="text-terminal-special font-mono text-lg font-extralight">{" " + words[index].substring(0, subIndex)}</p>
+                    <p className="text-white  ">I'm a</p>
+                    <p className="text-white   text-2xl">&nbsp;</p>
+                    <p className="text-terminal-special   text-2xl font-extralight">{" " + words[index].substring(0, subIndex)}</p>
                     {blink && <Blinker />}
                 </div>
-                <p className="text-white font-mono ">Usage:</p>
+                <p className="text-white   ">Usage:</p>
                 <div className="flex flex-col bg-gray-600 rounded-sm p-2 mb-2">
-                    <p className="text-yellow-500 font-mono">cd &lt;option&gt;</p>
+                    <p className="text-yellow-500  ">cd &lt;option&gt;</p>
                 </div>
-                <p className="text-white font-mono">Options:</p>
-                <div className="flex flex-col bg-gray-600 rounded-sm p-2 mb-3">
-                    <p className="text-yellow-500 font-mono"><span className="text-gray-400">&gt;</span> about</p>
-                    <p className="text-yellow-500 font-mono"><span className="text-gray-400">&gt;</span> blogs</p>
-                    <p className="text-yellow-500 font-mono"><span className="text-gray-400">&gt;</span> projects</p>
-                    <p className="text-yellow-500 font-mono"><span className="text-gray-400">&gt;</span> contact</p>
+                <p className="text-white  ">Options:</p>
+                <div className="flex flex-col bg-gray-600 rounded-sm p-2 mb-3 text-yellow-500">
+                    <p><span className="text-gray-400">&gt;</span> about</p>
+                    <p><span className="text-gray-400">&gt;</span> blogs</p>
+                    <p><span className="text-gray-400">&gt;</span> projects</p>
+                    <p><span className="text-gray-400">&gt;</span> contact</p>
                 </div>
                 {/* <div className="flex items-center">
-                    <p className="text-yellow-500 font-mono"><span className="text-gray-400">$</span> </p>
+                    <p className="text-yellow-500  "><span className="text-gray-400">$</span> </p>
                     {blink && <Blinker />}
                 </div> */}
-                <form className="bg-terminal-gray font-mono text-white" onSubmit={handleInput}>
+                <p className="text-yellow-500  "> {output === '' ? <br /> : output}</p>
+                <form className="bg-terminal-gray   text-white" onSubmit={handleInput}>
                     <label>$ </label>
-                    <input type="text" className="bg-terminal-gray focus:outline-none" value={input} onChange={(e) => { setInput(e.target.value); }}/>
+                    <input type="text" className="bg-terminal-gray focus:outline-none w-5/6" value={input} onChange={(e) => { setInput(e.target.value); }} />
                 </form>
             </div>
         </div>
@@ -97,8 +113,8 @@ const Circle = ({ style, ...props }) => {
 
 const Blinker = () => {
     return (
-        <svg className="fill-current text-white text-xs w-2 h-4">
-            <rect className="w-2 h-4" />
+        <svg className="fill-current text-white text-lg w-2 h-5">
+            <rect className="w-2 h-5" />
         </svg>
     );
 };
