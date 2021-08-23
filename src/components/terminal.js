@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { navigate } from 'gatsby-link';
-export default function Terminal() {
+
+export default function Terminal({onScroll, ...props}) {
     const [description, setDescription] = useState('');
     const [index, setIndex] = useState(0);
     const [subIndex, setSubIndex] = useState(0);
@@ -49,6 +50,8 @@ export default function Terminal() {
         const links = {
             blogs: '/blogs/',
             projects: '/projects/',
+            about: '/#about-me',
+            contact: '/#contact',
         }
         if (inputs[0] !== 'cd' || !(inputs[1] in links)) {
             setOutput('Command not found, try \'cd about\'');
