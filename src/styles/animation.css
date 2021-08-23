@@ -69,7 +69,7 @@
 }
 
 .right-leg-movement {
-    animation-name: left-leg-movement;
+    animation-name: right-leg-movement;
     animation-duration: 4s;
     animation-iteration-count: infinite;
     transform-origin: top right;
@@ -77,12 +77,12 @@
 
 @keyframes right-leg-movement {
     from {
-        transform: rotate(1deg);
-    }
-    50% {
         transform: rotate(0deg);
     }
-    to {
+    50% {
         transform: rotate(1deg);
+    }
+    to {
+        transform: rotate(0deg);
     }
 }
