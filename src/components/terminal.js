@@ -60,7 +60,7 @@ export default function Terminal() {
         console.log(links[inputs[1]])
     };
     return (
-        <div className={"flex flex-col bg-terminal-gray rounded-md px-4 py-4 font-mono text-xl w-2/5 drop-shadow-2xl    "}>
+        <div className={"flex flex-col bg-terminal-gray rounded-md px-4 py-4 font-mono text-xl w-full md:w-2/5 drop-shadow-2xl md:text-2xl"}>
             <div className="flex justify-center content-start items-center h-3 mb-5 md:mb-9">
                 <div className="flex items-center space-x-2 md:space-x-3 h-3 w-14">
                     <Circle style="text-red-500" />
@@ -74,8 +74,8 @@ export default function Terminal() {
                 <p className="text-white  ">Heyoo, My name is Bryan 😊</p>
                 <div className="flex items-center mb-3">
                     <p className="text-white  ">I'm a</p>
-                    <p className="text-white   text-2xl">&nbsp;</p>
-                    <p className="text-terminal-special   text-2xl font-extralight">{" " + words[index].substring(0, subIndex)}</p>
+                    <p className="text-white md:text-3xl text-2xl">&nbsp;</p>
+                    <p className="text-terminal-special md:text-3xl text-2xl font-extralight">{" " + words[index].substring(0, subIndex)}</p>
                     {blink && <Blinker />}
                 </div>
                 <p className="text-white   ">Usage:</p>
@@ -113,8 +113,8 @@ const Circle = ({ style, ...props }) => {
 
 const Blinker = () => {
     return (
-        <svg className="fill-current text-white text-lg w-2 h-5">
-            <rect className="w-2 h-5" />
+        <svg className="fill-current text-white text-lg w-3 h-6">
+            <rect className="w-3 h-6" />
         </svg>
     );
 };
