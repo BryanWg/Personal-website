@@ -1,22 +1,33 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../../components/layout'
+import Card from '../../components/card'
 
-const BlogPage = ({data, ...props}) => {
+const BlogPage = ({ data, ...props }) => {
     return (
-        <Layout pageTitle="My Blog Posts">
-            {data.allFile.nodes.map((node) => <p>{node.name}</p>)}
+        <Layout pageTitle="Blog Posts">
+            <div className="flex flex-wrap">
+                {data.allMdx.nodes.map((node) =>
+                    <Card frontmatter={{ ...node.frontmatter }} key={node.key} />
+                )}
+            </div>
+            
         </Layout>
     )
 }
 
 export const query = graphql`
 query{
-    allFile {
-        nodes{
-            name
-        }
+  allMdx {
+    nodes {
+      frontmatter {
+        excerpt
+        slug
+        title
+      }
+      id
     }
+  }
 }`
 
 export default BlogPage
