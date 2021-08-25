@@ -12,20 +12,20 @@ module.exports = {
         path: `${__dirname}/src/blog`,
       }
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: `project`,
-        path: `${__dirname}/src/project`,
-      }
-    },
     // {
     //   resolve: "gatsby-source-filesystem",
     //   options: {
-    //     name: `image`,
-    //     path: `${__dirname}/src/images`,
+    //     name: `project`,
+    //     path: `${__dirname}/src/project`,
     //   }
     // },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `image`,
+        path: `${__dirname}/src/images`,
+      }
+    },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
