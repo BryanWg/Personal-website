@@ -24,6 +24,7 @@ query{
         excerpt
         slug
         title
+        featureImage
       }
       id
     }

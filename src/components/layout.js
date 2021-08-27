@@ -21,7 +21,7 @@ const Layout = ({ pageTitle, children }) => {
     return (
         <div>
             <title>{pageTitle} | {data.site.siteMetadata.title}</title>
-            <nav className="flex flex-col space-y-1 bg-space-indigo  px-6 py-3 space-x-4  md:flex-row md:items-center text-white">
+            <nav className="flex flex-col space-y-1 bg-space-indigo w-full px-6 py-3 space-x-4  md:flex-row md:items-center text-white">
                 <div className="flex space-x-3 items-center">
                     <button type="button" className="hover:bg-indigo-300 rounded-sm md:hidden" onClick={() => setOpen(oldState => !oldState)}>
                         {isOpen ? <RiCloseFill className="m-1 w-4 h-4" /> : <RiMenu5Fill className="m-1 w-4 h-4" />}

@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import Img from 'gatsby-image';
-import { useStaticQuery } from 'gatsby';
-export default function FeatureImage({ imageName, fixed, ...props }) {
+import { useStaticQuery, graphql } from 'gatsby';
 
-    // const data = graphql`
-    // query{
-    //     imageSharp(fixed:{originalName: {eq: imageName}}) {
-    //             fixed {
-    //                 ...GatsbyImageSharpFixed
-    //             }
-    //         }
-    // }`;
-    
+export default function FeatureImage({ imageName, fixed, className, ...props }) {
+    const data = useStaticQuery(graphql`
+    query featureImage($imageName: String) {
+    imageSharp(fixed:{originalName: {eq: $imageName}}) {
+        fixed {
+            ...GatsbyImageSharpFixed
+        }
+    }
+    }
+    `);
+
     return (
         // <Img fixed={fixed ? fixed : data.imageSharp.fixed}/>
-        <Img fixed={fixed }/>
+        <Img fixed={data.imageSharp.fixed} objectFit="cover" className={className}/>
     );
 }
