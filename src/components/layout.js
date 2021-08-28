@@ -6,7 +6,7 @@ const Layout = ({ pageTitle, children }) => {
     const [isOpen, setOpen] = React.useState(false)
     const menuItem = [
         { name: 'Blogs', link: '/blogs' },
-        { name: 'Projects', link: '/projects' },
+        // { name: 'Projects', link: '/projects' },
     ]
     const data = useStaticQuery(graphql`
     query {

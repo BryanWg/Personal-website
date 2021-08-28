@@ -6,9 +6,9 @@ import Card from '../../components/card'
 const BlogPage = ({ data, ...props }) => {
     return (
         <Layout pageTitle="Blog Posts">
-            <div className="flex flex-wrap">
+            <div className="flex flex-col md:flex-row md:flex-wrap">
                 {data.allMdx.nodes.map((node) =>
-                    <Card frontmatter={{ ...node.frontmatter }} key={node.key} />
+                  <Card frontmatter={{ ...node.frontmatter }} className="w-full" key={node.key} />
                 )}
             </div>
             
