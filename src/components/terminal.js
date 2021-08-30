@@ -49,7 +49,7 @@ export default function Terminal({onScroll, ...props}) {
 
         const links = {
             blogs: '/blogs/',
-            projects: '/projects/',
+            // projects: '/projects/',
             about: '/#about-me',
             contact: '/#contact',
         }
